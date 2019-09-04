@@ -2,7 +2,10 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,12 +50,17 @@ public class AddCashPaymentServlet extends HttpServlet {
 		
 		CashPayment c1 = new CashPayment();
 		
-		String clientID = request.getParameter("clientID");
 		String amount = request.getParameter("amount");
-		String deliveryDate = request.getParameter("deliveryDate");
+		Date deliveryDate = null;
+		
+		try {
+		deliveryDate = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("deliveryDate"));
+		}catch(ParseException e) {
+			e.printStackTrace();
+		}
 		String deliveryAddress = request.getParameter("deliveryAddress");
 	
-		if(clientID.equals("") || amount.equals("")|| deliveryDate.equals("") ||deliveryAddress.equals("")  ) {
+		if(amount.equals("")||deliveryAddress.equals("")  ) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('Fill all Details')");
@@ -75,7 +83,6 @@ public class AddCashPaymentServlet extends HttpServlet {
 		}
 	
 		else {
-			c1.setClientID(clientID);
 			c1.setAmount(amount);
 			c1.setDeliveryDate(deliveryDate);
 			c1.setDeliveryAddress(deliveryAddress);

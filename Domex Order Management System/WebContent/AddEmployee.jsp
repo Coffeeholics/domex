@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="CSS/AddEmployee.css">
 </head>
 
-<body style = "background-image:url('Images/i5.jpg'); position = fixed; background-repeat:no-repeat">
+<body style = "background-image:url('Images/i5.jpg'); position = fixed;">
 <div class="navigationbar">
   	<a href="Home.jsp">Home</a>
   	<a href="EmployeeList.jsp">EmployeeList</a>
@@ -29,10 +29,6 @@
 		<p></p>
 
 		<fieldset>
-			
-			<p></p>
-			<label for="name"> Employee ID: </label> 
-			<input type="text" id="employeeID" name="employeeID"> 
 			
 			<label for="name">First Name:</label> 
 			<input type="text" id="fname" name="fname"> <label for="Name">

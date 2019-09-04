@@ -22,15 +22,13 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 
 	@Override
 	public boolean addNewOrderPayment(CashPayment c1) throws SQLException {
-		String sql = "Insert into cashpayment values(?,?,?,?,?)";
+		String sql = "Insert into cashpayment values(?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		ps.setObject(1, c1.getOrderPaymentID());
-		ps.setObject(2, c1.getClientID());
-		ps.setObject(3, c1.getAmount());
-		ps.setObject(4, c1.getDeliveryDate());
-		ps.setObject(5, c1.getDeliveryAddress());
-		
+		ps.setObject(1, c1.getCashPID());
+		ps.setObject(2, c1.getAmount());
+		ps.setObject(3, c1.getDeliveryDate());
+		ps.setObject(4, c1.getDeliveryAddress());
 		int res = ps.executeUpdate();
 		
 		return res > 0;
@@ -38,14 +36,14 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 
 	@Override
 	public boolean addNewOrderPayment(ChequePayment ch1) throws SQLException {
-		String sql = "Insert into chequepayment values(?,?,?,?,?)";
+		String sql = "Insert into chequepayment values(?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		ps.setObject(1, ch1.getOrderPaymentID());
-		ps.setObject(2, ch1.getClientID());
-		ps.setObject(3, ch1.getAmount());
-		ps.setObject(4, ch1.getChequeNumber());
-		ps.setObject(5, ch1.getBank());
+		ps.setObject(1, ch1.getChequePID());
+		ps.setObject(2, ch1.getAmount());
+		ps.setObject(3, ch1.getChequeNumber());
+		ps.setObject(4, ch1.getBank());
+
 	
 		int res = ps.executeUpdate();
 		
@@ -54,16 +52,15 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 
 	@Override
 	public boolean addNewOrderPayment(CardPayment ca1) throws SQLException {
-		String sql = "Insert into cardpayment values(?,?,?,?,?,?,?)";
+		String sql = "Insert into cardpayment values(?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		ps.setObject(1, ca1.getOrderPaymentID());
-		ps.setObject(2, ca1.getClientID());
-		ps.setObject(3, ca1.getAmount());
-		ps.setObject(4, ca1.getCardType());
-		ps.setObject(5, ca1.getCardNumber());
-		ps.setObject(6, ca1.getExpiryDate());
-		ps.setObject(7, ca1.getCcv());
+		ps.setObject(1, ca1.getCardPID());
+		ps.setObject(2, ca1.getAmount());
+		ps.setObject(3, ca1.getCardType());
+		ps.setObject(4, ca1.getCardNumber());
+		ps.setObject(5, ca1.getExpiryDate());
+		ps.setObject(6, ca1.getCcv());
 		
 		int res = ps.executeUpdate();
 		
@@ -82,12 +79,12 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 			
 			CashPayment c1= new CashPayment();
 			
-			c1.setOrderPaymentID(rst.getInt("orderPaymentID"));
-			c1.setClientID(rst.getString("clientID"));
+			c1.setCashPID(rst.getInt("cashPID"));
 			c1.setAmount(rst.getString("amount"));
-			c1.setDeliveryDate(rst.getString("deliveryDate"));
-			c1.setDeliveryDate(rst.getString("deliveryAddress"));
-			
+			c1.setDeliveryDate(rst.getDate("deliveryDate"));
+			c1.setDeliveryAddress(rst.getString("deliveryAddress"));
+			c1.setRegularCID(rst.getInt("regularCID"));
+			c1.setCorporateCID(rst.getInt("corporateCID"));
 			c1List.add(c1);
 			
 		}
@@ -107,11 +104,12 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 			
 			ChequePayment ch1= new ChequePayment();
 			
-			ch1.setOrderPaymentID(rst.getInt("orderPaymentID"));
-			ch1.setClientID(rst.getString("clientID"));
+			ch1.setChequePID(rst.getInt("chequePID"));
 			ch1.setAmount(rst.getString("amount"));
 			ch1.setChequeNumber(rst.getString("chequeNumber"));
 			ch1.setBank(rst.getString("bank"));
+			ch1.setRegularCID(rst.getInt("regularCID"));
+			ch1.setCorporateCID(rst.getInt("corporateCID"));
 			
 			ch1List.add(ch1);
 			
@@ -132,13 +130,14 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 			
 			CardPayment ca1= new CardPayment();
 			
-			ca1.setOrderPaymentID(rst.getInt("orderPaymentID"));
-			ca1.setClientID(rst.getString("clientID"));
+			ca1.setCardPID(rst.getInt("cardPID"));
 			ca1.setAmount(rst.getString("amount"));
 			ca1.setCardType(rst.getString("cardType"));
 			ca1.setCardNumber(rst.getString("cardNumber"));
-			ca1.setExpiryDate(rst.getString("expiryDate"));
+			ca1.setExpiryDate(rst.getDate("expiryDate"));
 			ca1.setCcv(rst.getString("ccv"));
+			ca1.setRegularCID(rst.getInt("regularCID"));
+			ca1.setCorporateCID(rst.getInt("corporateCID"));
 			
 			ca1List.add(ca1);
 			
@@ -148,24 +147,24 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 	}
 
 	@Override
-	public boolean deleteCashPayment(String orderPaymentID) throws SQLException {
-		String sql = "delete from cash where orderPaymentID = '"+orderPaymentID+"'";
+	public boolean deleteCashPayment(int cashPID) throws SQLException {
+		String sql = "delete from cashpayment where cashPID = '"+cashPID+"'";
 		Statement stm = conn.createStatement();
 		
 		return stm.executeUpdate(sql) > 0;
 	}
 
 	@Override
-	public boolean deleteChequePayment(String orderPaymentID) throws SQLException {
-		String sql = "delete from cheque where orderPaymentID = '"+orderPaymentID+"'";
+	public boolean deleteChequePayment(int chequePID) throws SQLException {
+		String sql = "delete from chequepayment where chequePID = '"+chequePID+"'";
 		Statement stm = conn.createStatement();
 		
 		return stm.executeUpdate(sql) > 0;
 	}
 
 	@Override
-	public boolean deleteCardPayment(String orderPaymentID) throws SQLException {
-		String sql = "delete from card where orderPaymentID = '"+orderPaymentID+"'";
+	public boolean deleteCardPayment(int cardPID) throws SQLException {
+		String sql = "delete from cardpayment where cardPID = '"+cardPID+"'";
 		Statement stm = conn.createStatement();
 		
 		return stm.executeUpdate(sql) > 0;

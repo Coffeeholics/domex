@@ -11,7 +11,6 @@ public interface IEmployeeService {
 	
 	public ArrayList<Employee> getEmployee() throws SQLException;
 
-	boolean deleteEmployee(String employeeID) throws SQLException;
+	boolean deleteEmployee(int employeeID) throws SQLException;
 
-	
 }

@@ -3,7 +3,10 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,23 +52,29 @@ public class AddEmployeeServlets extends HttpServlet {
 		
 		Employee employee = new Employee();
 		
+		Date dob = null;
+		
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String address = request.getParameter("address");
 		String gender = request.getParameter("gender");
-		String dob = request.getParameter("dob");
+		try {
+		dob = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("dob"));
+		}catch(ParseException e) {
+			e.printStackTrace();
+		}
 		String contactNo = request.getParameter("contactNo");
 		String email = request.getParameter("email");
 		String qualification = request.getParameter("qualification");
 		String type = request.getParameter("type");
 	
-		if(fname.equals("") ||lname.equals("") || address.equals("") || gender.equals("") || dob.equals("") || contactNo.equals("") || email.equals("") ||qualification.equals("") || type.equals("")) {
+		if(fname.equals("") ||lname.equals("") || address.equals("") || gender.equals("") || contactNo.equals("") || email.equals("") ||qualification.equals("") || type.equals("")) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('Fill all Details')");
 			out.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 			dispatcher.include(request, response);
 		}	
 		else if(!fname.matches("^[a-zA-Z]+$")) {
@@ -75,7 +84,7 @@ public class AddEmployeeServlets extends HttpServlet {
 			writer.println("alert('First name must be letters only')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 			dispatcher.include(request, response);
 			
 		}else if(!lname.matches("^[a-zA-Z]+$")) {
@@ -85,7 +94,7 @@ public class AddEmployeeServlets extends HttpServlet {
 			writer.println("alert('Last name must be letters only')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 			dispatcher.include(request, response);
 			
 		}
@@ -96,7 +105,7 @@ public class AddEmployeeServlets extends HttpServlet {
 			writer.println("alert('Address must be letters only')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 			dispatcher.include(request, response);
 			
 		}
@@ -107,7 +116,7 @@ public class AddEmployeeServlets extends HttpServlet {
 			writer.println("alert('Gender must be letters only')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 			dispatcher.include(request, response);
 	
 			
@@ -119,7 +128,7 @@ public class AddEmployeeServlets extends HttpServlet {
 			writer.println("alert('Contact number must be numbers only')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 			dispatcher.include(request, response);
 			
 		}
@@ -130,19 +139,19 @@ public class AddEmployeeServlets extends HttpServlet {
 			writer.println("alert('Type must be letters only')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("AddEmployee.jsp");
 			dispatcher.include(request, response);
 		}
 		else {
-			employee.setFname(request.getParameter("fname"));
-			employee.setLname(request.getParameter("lname"));
-			employee.setAddress(request.getParameter("address"));
-			employee.setGender(request.getParameter("gender"));
-			employee.setDob(request.getParameter("dob"));
-			employee.setContactNo(request.getParameter("contactNo"));
-			employee.setEmail(request.getParameter("email"));
-			employee.setQualifications(request.getParameter("qualification"));
-			employee.setType(request.getParameter("type"));
+			employee.setFname(fname);
+			employee.setLname(lname);
+			employee.setAddress(address);
+			employee.setGender(gender);
+			employee.setDob(dob);
+			employee.setContactNo(contactNo);
+			employee.setEmail(email);
+			employee.setQualifications(qualification);
+			employee.setType(type);
 			
 		}
 		
@@ -161,7 +170,7 @@ public class AddEmployeeServlets extends HttpServlet {
 					writer.println("</script>");
 					
 					
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AddEmployee.jsp");
 					dispatcher.include(request, response);
 			}
 			else

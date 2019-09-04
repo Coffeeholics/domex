@@ -17,8 +17,8 @@ public interface IOrderPaymentService {
 	public ArrayList<ChequePayment> getChequePayments() throws SQLException;
 	public ArrayList<CardPayment> getCardPayments() throws SQLException;
 	
-	boolean deleteCashPayment(String orderPaymentID) throws SQLException;
-	boolean deleteChequePayment(String orderPaymentID) throws SQLException;
-	boolean deleteCardPayment(String orderPaymentID) throws SQLException;
+	boolean deleteCashPayment(int cashPID) throws SQLException;
+	boolean deleteChequePayment(int chequePID) throws SQLException;
+	boolean deleteCardPayment(int cardPID) throws SQLException;
 
 }

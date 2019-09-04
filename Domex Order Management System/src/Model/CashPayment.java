@@ -1,40 +1,36 @@
 package Model;
 
+import java.util.Date;
+
 public class CashPayment{
-	private int orderPaymentID;
-	private String clientID;
+	private int cashPID;
 	private String amount;
-	private String deliveryDate;
+	private Date deliveryDate;
 	private String deliveryAddress;
+	private int regularCID;
+	private int corporateCID;
 	
 	public CashPayment() {
 		super();
 	}
 
-	public CashPayment(int orderPaymentID, String clientID, String amount, String deliveryDate,
-			String deliveryAddress) {
+	public CashPayment(int cashPID, String amount, Date deliveryDate, String deliveryAddress, int regularCID,
+			int corporateCID) {
 		super();
-		this.orderPaymentID = orderPaymentID;
-		this.clientID = clientID;
+		this.cashPID = cashPID;
 		this.amount = amount;
 		this.deliveryDate = deliveryDate;
 		this.deliveryAddress = deliveryAddress;
+		this.regularCID = regularCID;
+		this.corporateCID = corporateCID;
 	}
 
-	public int getOrderPaymentID() {
-		return orderPaymentID;
+	public int getCashPID() {
+		return cashPID;
 	}
 
-	public void setOrderPaymentID(int orderPaymentID) {
-		this.orderPaymentID = orderPaymentID;
-	}
-
-	public String getClientID() {
-		return clientID;
-	}
-
-	public void setClientID(String clientID) {
-		this.clientID = clientID;
+	public void setCashPID(int cashPID) {
+		this.cashPID = cashPID;
 	}
 
 	public String getAmount() {
@@ -45,11 +41,11 @@ public class CashPayment{
 		this.amount = amount;
 	}
 
-	public String getDeliveryDate() {
+	public Date getDeliveryDate() {
 		return deliveryDate;
 	}
 
-	public void setDeliveryDate(String deliveryDate) {
+	public void setDeliveryDate(Date deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 
@@ -59,6 +55,22 @@ public class CashPayment{
 
 	public void setDeliveryAddress(String deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;
+	}
+
+	public int getRegularCID() {
+		return regularCID;
+	}
+
+	public void setRegularCID(int regularCID) {
+		this.regularCID = regularCID;
+	}
+
+	public int getCorporateCID() {
+		return corporateCID;
+	}
+
+	public void setCorporateCID(int corporateCID) {
+		this.corporateCID = corporateCID;
 	}
 
 }

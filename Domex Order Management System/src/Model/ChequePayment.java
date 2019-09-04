@@ -1,39 +1,34 @@
 package Model;
 
 public class ChequePayment{
-	private int orderPaymentID;
-	private String clientID;
+	private int chequePID;
 	private String amount;
 	private String chequeNumber;
 	private String bank;
+	private int regularCID;
+	private int corporateCID;
 
 	public ChequePayment() {
 		super();
 	}
 
-	public ChequePayment(int orderPaymentID, String clientID, String amount, String chequeNumber, String bank) {
+	public ChequePayment(int chequePID, String amount, String chequeNumber, String bank, int regularCID,
+			int corporateCID) {
 		super();
-		this.orderPaymentID = orderPaymentID;
-		this.clientID = clientID;
+		this.chequePID = chequePID;
 		this.amount = amount;
 		this.chequeNumber = chequeNumber;
 		this.bank = bank;
+		this.regularCID = regularCID;
+		this.corporateCID = corporateCID;
 	}
 
-	public int getOrderPaymentID() {
-		return orderPaymentID;
+	public int getChequePID() {
+		return chequePID;
 	}
 
-	public void setOrderPaymentID(int orderPaymentID) {
-		this.orderPaymentID = orderPaymentID;
-	}
-
-	public String getClientID() {
-		return clientID;
-	}
-
-	public void setClientID(String clientID) {
-		this.clientID = clientID;
+	public void setChequePID(int chequePID) {
+		this.chequePID = chequePID;
 	}
 
 	public String getAmount() {
@@ -58,6 +53,22 @@ public class ChequePayment{
 
 	public void setBank(String bank) {
 		this.bank = bank;
+	}
+
+	public int getRegularCID() {
+		return regularCID;
+	}
+
+	public void setRegularCID(int regularCID) {
+		this.regularCID = regularCID;
+	}
+
+	public int getCorporateCID() {
+		return corporateCID;
+	}
+
+	public void setCorporateCID(int corporateCID) {
+		this.corporateCID = corporateCID;
 	}
 
 }

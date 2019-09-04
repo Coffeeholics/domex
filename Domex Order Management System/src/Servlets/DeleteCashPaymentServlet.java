@@ -44,13 +44,13 @@ public class DeleteCashPaymentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		String orderPaymentID = request.getParameter("deletePayment");			
+		int cashPID = Integer.parseInt(request.getParameter("deletePayment"));			
 		
 		IOrderPaymentService ipaymentService = new IOrderPaymentServiceImplement();
 		
 		boolean isDeleted = false;
 		try {
-			isDeleted = ipaymentService.deleteCashPayment(orderPaymentID);
+			isDeleted = ipaymentService.deleteCashPayment(cashPID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class DeleteCashPaymentServlet extends HttpServlet {
 			writer.println("alert('Deleted Successfully')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CashPaymentList.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CashList.jsp");
 			dispatcher.include(request, response);
 		}else
 			System.out.println("Error");

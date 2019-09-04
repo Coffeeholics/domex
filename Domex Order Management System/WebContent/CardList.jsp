@@ -15,13 +15,14 @@
 	  <table>
          <thead>
 		                                   
-				<th>Order PaymentID</th>
-				<th>ClientID</th>
+				<th>CardPID</th>
                 <th>Card type</th>
                 <th>Card number</th>
                 <th>Amount</th>
                 <th>Expiry Date</th>
-                <th>CCV</th>   
+                <th>CCV</th> 
+                <th>RegularCID</th>
+                <th>CorporateCID</th>  
 										
             </thead>
             <tbody>
@@ -31,17 +32,18 @@
                   for(CardPayment ca1 : calist){
                   %>
                   <tr>
-                      <td> <%=ca1.getOrderPaymentID() %> </td>
-                      <td> <%=ca1.getClientID() %> </td>
+                      <td> <%=ca1.getCardPID() %> </td>
                       <td> <%=ca1.getCardType() %> </td>
                       <td> <%=ca1.getCardNumber() %> </td>
                       <td> <%=ca1.getAmount() %> </td>
                       <td> <%=ca1.getExpiryDate() %> </td>
                       <td> <%=ca1.getCcv() %> </td>
+                      <td> <%=ca1.getRegularCID() %> </td>
+                      <td> <%=ca1.getCorporateCID() %></td>
              
 					<td>
 					   <form action="DeleteCardPaymentServlet" method="post">
-							<input type="hidden" name="deletePayment" value="<%=ca1.getOrderPaymentID()%>">
+							<input type="hidden" name="deletePayment" value="<%=ca1.getCardPID()%>">
 							<input type="submit" name="btnDelete" value="Delete" style=" background-color: purple;border: none; color: white;padding: 10px 32px; text-decoration: none;margin: 4px 2px;cursor: pointer;border-radius: 5%;font-weight:bold;">
 						</form>
 											

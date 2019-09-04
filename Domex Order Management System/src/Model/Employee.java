@@ -1,13 +1,15 @@
 package Model;
 
+import java.sql.Date;
+
 public class Employee {
 	
-	private String employeeID;
+	private int employeeID;
 	private String fname;
 	private String lname;
 	private String address;
 	private String gender;
-	private String dob;
+	private Date dob;
 	private String contactNo;
 	private String email;
 	private String qualifications;
@@ -17,8 +19,8 @@ public class Employee {
 		
 	}
 
-	public Employee(String employeeID, String fname, String lname, String address, String gender, String dob,
-			 String contactNo, String email, String qualifications, String type) {
+	public Employee(int employeeID, String fname, String lname, String address, String gender, Date dob,
+			String contactNo, String email, String qualifications, String type) {
 		super();
 		this.employeeID = employeeID;
 		this.fname = fname;
@@ -32,11 +34,11 @@ public class Employee {
 		this.type = type;
 	}
 
-	public String getEmployeeID() {
+	public int getEmployeeID() {
 		return employeeID;
 	}
 
-	public void setEmployeeID(String employeeID) {
+	public void setEmployeeID(int employeeID) {
 		this.employeeID = employeeID;
 	}
 
@@ -72,11 +74,11 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
@@ -111,5 +113,5 @@ public class Employee {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 }

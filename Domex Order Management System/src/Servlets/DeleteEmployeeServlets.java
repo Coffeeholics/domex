@@ -41,7 +41,7 @@ public class DeleteEmployeeServlets extends HttpServlet{
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		String employeeID = request.getParameter("deleteEmployee");			
+		int employeeID = Integer.parseInt(request.getParameter("deletePayment"));			
 		
 		EmployeeServiceImplement iEmployeeService = new EmployeeServiceImplement();
 		
@@ -61,7 +61,7 @@ public class DeleteEmployeeServlets extends HttpServlet{
 			writer.println("alert('Deleted Successfully')");
 			writer.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CardPaymentList.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/EmployeeList.jsp");
 			dispatcher.include(request, response);
 		}else
 			System.out.println("Error");

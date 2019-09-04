@@ -16,12 +16,12 @@
 	  <table>
          <thead>
 		                                   
-				<th>Order PaymentID</th>
-				<th>OrderID</th>
-				<th>ClientID</th>
+				<th>ChequePID</th>
 				<th>Amount</th>
 				<th>ChequeNumber</th>
 				<th>Bank</th> 
+				<th>RegularCID</th>
+				<th>CorporateCID</th>
 										
             </thead>
              <tbody>
@@ -31,15 +31,16 @@
                   for(ChequePayment ch1 : chlist){
                   %>
                   <tr>
-                      <td> <%=ch1.getOrderPaymentID() %> </td>
-                      <td> <%=ch1.getClientID() %> </td>
+                      <td> <%=ch1.getChequePID() %> </td>
                       <td> <%=ch1.getAmount() %> </td>
                       <td> <%=ch1.getChequeNumber() %> </td>
                       <td> <%=ch1.getBank() %> </td>
+                      <td> <%=ch1.getRegularCID() %> </td>
+                      <td> <%=ch1.getCorporateCID() %></td>
              
 					<td>
 					   <form action="DeleteChequePaymentServlet" method="post">
-							<input type="hidden" name="deletePayment" value="<%=ch1.getOrderPaymentID()%>">
+							<input type="hidden" name="deletePayment" value="<%=ch1.getChequePID()%>">
 							<input type="submit" name="btnDelete" value="Delete" style=" background-color: purple;border: none; color: white;padding: 10px 32px; text-decoration: none;margin: 4px 2px;cursor: pointer;border-radius: 5%;font-weight:bold;">
 						</form>
 											

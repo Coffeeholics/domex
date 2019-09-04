@@ -1,45 +1,41 @@
 package Model;
 
+import java.util.Date;
+
 public class CardPayment{
-	private int orderPaymentID;
-	private String clientID;
+	private int cardPID;
 	private String amount;
 	private String cardType;
 	private String cardNumber;
-	private String expiryDate;
+	private Date expiryDate;
 	private String ccv;
+	private int regularCID;
+	private int corporateCID;
 	
 	public CardPayment() {
 		super();
 		
 	}
 
-	public CardPayment(int orderPaymentID, String clientID, String amount, String cardType, String cardNumber,
-			String expiryDate, String ccv) {
+	public CardPayment(int cardPID, String amount, String cardType, String cardNumber, Date expiryDate, String ccv,
+			int regularCID, int corporateCID) {
 		super();
-		this.orderPaymentID = orderPaymentID;
-		this.clientID = clientID;
+		this.cardPID = cardPID;
 		this.amount = amount;
 		this.cardType = cardType;
 		this.cardNumber = cardNumber;
 		this.expiryDate = expiryDate;
 		this.ccv = ccv;
+		this.regularCID = regularCID;
+		this.corporateCID = corporateCID;
 	}
 
-	public int getOrderPaymentID() {
-		return orderPaymentID;
+	public int getCardPID() {
+		return cardPID;
 	}
 
-	public void setOrderPaymentID(int orderPaymentID) {
-		this.orderPaymentID = orderPaymentID;
-	}
-
-	public String getClientID() {
-		return clientID;
-	}
-
-	public void setClientID(String clientID) {
-		this.clientID = clientID;
+	public void setCardPID(int cardPID) {
+		this.cardPID = cardPID;
 	}
 
 	public String getAmount() {
@@ -66,11 +62,11 @@ public class CardPayment{
 		this.cardNumber = cardNumber;
 	}
 
-	public String getExpiryDate() {
+	public Date getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(String expiryDate) {
+	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 
@@ -81,5 +77,21 @@ public class CardPayment{
 	public void setCcv(String ccv) {
 		this.ccv = ccv;
 	}
-	
+
+	public int getRegularCID() {
+		return regularCID;
+	}
+
+	public void setRegularCID(int regularCID) {
+		this.regularCID = regularCID;
+	}
+
+	public int getCorporateCID() {
+		return corporateCID;
+	}
+
+	public void setCorporateCID(int corporateCID) {
+		this.corporateCID = corporateCID;
+	}
+
 }

@@ -41,7 +41,7 @@ public class EmployeeServiceImplement implements IEmployeeService {
 
 	@Override
 	public ArrayList<Employee> getEmployee() throws SQLException {
-		String sql = "select*from Employee";
+		String sql = "select*from employee";
 		Statement stm = conn.createStatement();
 		ResultSet rst = stm.executeQuery(sql);
 		
@@ -51,12 +51,12 @@ public class EmployeeServiceImplement implements IEmployeeService {
 			
 			Employee e1 = new Employee();
 			
-			e1.setEmployeeID(rst.getString("employeeID"));
+			e1.setEmployeeID(rst.getInt("employeeID"));
 			e1.setFname(rst.getString("fname"));
 			e1.setLname(rst.getString("lname"));
 			e1.setAddress(rst.getString("address"));
 			e1.setGender(rst.getString("gender"));
-			e1.setDob(rst.getString("dob"));
+			e1.setDob(rst.getDate("dob"));
 			e1.setContactNo(rst.getString("contactNo"));
 			e1.setEmail(rst.getString("email"));
 			e1.setQualifications(rst.getString("qualifications"));
@@ -70,7 +70,7 @@ public class EmployeeServiceImplement implements IEmployeeService {
 	}
 
 	@Override
-	public boolean deleteEmployee(String employeeID) throws SQLException {
+	public boolean deleteEmployee(int employeeID) throws SQLException {
 		String sql = "delete from employee where employeeID = '"+employeeID+"'";
 		Statement stm = conn.createStatement();
 		

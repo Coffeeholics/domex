@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,14 +49,19 @@ public class AddCardPaymentServlet extends HttpServlet {
 		doGet(request, response);
 		CardPayment ca1 = new CardPayment();
 		
-		String clientID = request.getParameter("clientID");
 		String amount = request.getParameter("amount");
 		String cardType = request.getParameter("cardType");
 		String cardNumber = request.getParameter("cardNumber");	
-		String expiryDate = request.getParameter("expiryDate");
+		Date expiryDate = null;
+		
+		try {
+		expiryDate = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("expiryDate"));
+		}catch(ParseException e) {
+			e.printStackTrace();
+		}
 		String ccv = request.getParameter("ccv");
-	
-		if(cardType.equals("") || cardNumber.equals("") || amount.equals("")|| expiryDate.equals("")||ccv.equals("")) {
+		
+		if(cardType.equals("") || cardNumber.equals("") || amount.equals("")||ccv.equals("")) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('Fill all Details')");
@@ -108,7 +115,6 @@ public class AddCardPaymentServlet extends HttpServlet {
 		}
 		
 		else {
-			ca1.setClientID(clientID);
 			ca1.setAmount(amount);
 			ca1.setCardType(cardType);
 			ca1.setCardNumber(cardNumber);
