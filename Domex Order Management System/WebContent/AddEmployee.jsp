@@ -20,7 +20,7 @@
 </div>
 
 
-	<form action="AddEmployeeServlets" method="post">
+	<form method="post" action="AddEmployeeServlets" >
 
 		<p>
 			</br>

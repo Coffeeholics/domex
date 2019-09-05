@@ -17,7 +17,7 @@
   	<a href="PaymentMethod.jsp">Payment Method</a>
   	<a href="Myaccount.html">My Account</a>
 </div>
-<form action="AddCashServlet" method="post">
+<form action="AddCashPaymentServlet" method="post">
 
 		<p>
 			</br>
@@ -32,7 +32,7 @@
 			<input type="text" id="amount" name="amount"> 
 			
 			<label for="name">Delivery Date:</label> 
-			<input type="text" id="deliveryDate" name="deliveryDate">
+			<input type="date" id="deliveryDate" name="deliveryDate">
 			
 			<label for="name">Delivery Address:</label> 
 			<input type="text" id="deliveryAddress" name="deliveryAddress">

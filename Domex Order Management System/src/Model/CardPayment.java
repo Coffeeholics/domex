@@ -1,13 +1,12 @@
 package Model;
 
-import java.util.Date;
 
 public class CardPayment{
 	private int cardPID;
 	private String amount;
 	private String cardType;
 	private String cardNumber;
-	private Date expiryDate;
+	private String expiryDate;
 	private String ccv;
 	private int regularCID;
 	private int corporateCID;
@@ -17,7 +16,7 @@ public class CardPayment{
 		
 	}
 
-	public CardPayment(int cardPID, String amount, String cardType, String cardNumber, Date expiryDate, String ccv,
+	public CardPayment(int cardPID, String amount, String cardType, String cardNumber, String expiryDate, String ccv,
 			int regularCID, int corporateCID) {
 		super();
 		this.cardPID = cardPID;
@@ -62,11 +61,11 @@ public class CardPayment{
 		this.cardNumber = cardNumber;
 	}
 
-	public Date getExpiryDate() {
+	public String getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(Date expiryDate) {
+	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 

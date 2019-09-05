@@ -18,7 +18,7 @@
   	<a href="Myaccount.html">My Account</a>
 </div>
 
-<form action="AddCardServlet" method="post">
+<form action="AddCardPaymentServlet" method="post">
 
 		<p>
 			</br>

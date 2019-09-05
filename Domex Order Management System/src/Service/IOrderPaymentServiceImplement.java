@@ -36,7 +36,7 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 
 	@Override
 	public boolean addNewOrderPayment(ChequePayment ch1) throws SQLException {
-		String sql = "Insert into chequepayment values(?,?,?,?)";
+		String sql = "Insert into chequepayment values(?,?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
 		ps.setObject(1, ch1.getChequePID());
@@ -81,7 +81,7 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 			
 			c1.setCashPID(rst.getInt("cashPID"));
 			c1.setAmount(rst.getString("amount"));
-			c1.setDeliveryDate(rst.getDate("deliveryDate"));
+			c1.setDeliveryDate(rst.getString("deliveryDate"));
 			c1.setDeliveryAddress(rst.getString("deliveryAddress"));
 			c1.setRegularCID(rst.getInt("regularCID"));
 			c1.setCorporateCID(rst.getInt("corporateCID"));
@@ -134,7 +134,7 @@ public class IOrderPaymentServiceImplement implements IOrderPaymentService {
 			ca1.setAmount(rst.getString("amount"));
 			ca1.setCardType(rst.getString("cardType"));
 			ca1.setCardNumber(rst.getString("cardNumber"));
-			ca1.setExpiryDate(rst.getDate("expiryDate"));
+			ca1.setExpiryDate(rst.getString("expiryDate"));
 			ca1.setCcv(rst.getString("ccv"));
 			ca1.setRegularCID(rst.getInt("regularCID"));
 			ca1.setCorporateCID(rst.getInt("corporateCID"));

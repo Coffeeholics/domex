@@ -9,7 +9,7 @@ public class Employee {
 	private String lname;
 	private String address;
 	private String gender;
-	private Date dob;
+	private String dob;
 	private String contactNo;
 	private String email;
 	private String qualifications;
@@ -19,7 +19,7 @@ public class Employee {
 		
 	}
 
-	public Employee(int employeeID, String fname, String lname, String address, String gender, Date dob,
+	public Employee(int employeeID, String fname, String lname, String address, String gender, String dob,
 			String contactNo, String email, String qualifications, String type) {
 		super();
 		this.employeeID = employeeID;
@@ -74,11 +74,11 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
@@ -114,4 +114,4 @@ public class Employee {
 		this.type = type;
 	}
 
-}
+	}

@@ -51,13 +51,7 @@ public class AddCashPaymentServlet extends HttpServlet {
 		CashPayment c1 = new CashPayment();
 		
 		String amount = request.getParameter("amount");
-		Date deliveryDate = null;
-		
-		try {
-		deliveryDate = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("deliveryDate"));
-		}catch(ParseException e) {
-			e.printStackTrace();
-		}
+		String deliveryDate=request.getParameter("deliveryDate");
 		String deliveryAddress = request.getParameter("deliveryAddress");
 	
 		if(amount.equals("")||deliveryAddress.equals("")  ) {

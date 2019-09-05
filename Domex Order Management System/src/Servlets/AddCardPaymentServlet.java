@@ -52,13 +52,7 @@ public class AddCardPaymentServlet extends HttpServlet {
 		String amount = request.getParameter("amount");
 		String cardType = request.getParameter("cardType");
 		String cardNumber = request.getParameter("cardNumber");	
-		Date expiryDate = null;
-		
-		try {
-		expiryDate = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("expiryDate"));
-		}catch(ParseException e) {
-			e.printStackTrace();
-		}
+		String expiryDate = request.getParameter("expiryDate");
 		String ccv = request.getParameter("ccv");
 		
 		if(cardType.equals("") || cardNumber.equals("") || amount.equals("")||ccv.equals("")) {
@@ -67,7 +61,7 @@ public class AddCardPaymentServlet extends HttpServlet {
 			out.println("alert('Fill all Details')");
 			out.println("</script>");
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Card.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CardPayment.jsp");
 			dispatcher.include(request, response);
 		}	
 		else if(!cardType.matches("^[a-zA-Z]+$")) {

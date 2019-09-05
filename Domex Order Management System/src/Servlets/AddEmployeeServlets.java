@@ -52,17 +52,13 @@ public class AddEmployeeServlets extends HttpServlet {
 		
 		Employee employee = new Employee();
 		
-		Date dob = null;
+		
 		
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String address = request.getParameter("address");
 		String gender = request.getParameter("gender");
-		try {
-		dob = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("dob"));
-		}catch(ParseException e) {
-			e.printStackTrace();
-		}
+		String dob = request.getParameter("dob");
 		String contactNo = request.getParameter("contactNo");
 		String email = request.getParameter("email");
 		String qualification = request.getParameter("qualification");

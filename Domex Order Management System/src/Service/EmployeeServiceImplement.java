@@ -56,7 +56,7 @@ public class EmployeeServiceImplement implements IEmployeeService {
 			e1.setLname(rst.getString("lname"));
 			e1.setAddress(rst.getString("address"));
 			e1.setGender(rst.getString("gender"));
-			e1.setDob(rst.getDate("dob"));
+			e1.setDob(rst.getString("dob"));
 			e1.setContactNo(rst.getString("contactNo"));
 			e1.setEmail(rst.getString("email"));
 			e1.setQualifications(rst.getString("qualifications"));

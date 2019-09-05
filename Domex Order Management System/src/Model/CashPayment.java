@@ -1,11 +1,11 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CashPayment{
 	private int cashPID;
 	private String amount;
-	private Date deliveryDate;
+	private String deliveryDate;
 	private String deliveryAddress;
 	private int regularCID;
 	private int corporateCID;
@@ -14,7 +14,7 @@ public class CashPayment{
 		super();
 	}
 
-	public CashPayment(int cashPID, String amount, Date deliveryDate, String deliveryAddress, int regularCID,
+	public CashPayment(int cashPID, String amount, String deliveryDate, String deliveryAddress, int regularCID,
 			int corporateCID) {
 		super();
 		this.cashPID = cashPID;
@@ -41,11 +41,11 @@ public class CashPayment{
 		this.amount = amount;
 	}
 
-	public Date getDeliveryDate() {
+	public String getDeliveryDate() {
 		return deliveryDate;
 	}
 
-	public void setDeliveryDate(Date deliveryDate) {
+	public void setDeliveryDate(String deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 
@@ -73,4 +73,5 @@ public class CashPayment{
 		this.corporateCID = corporateCID;
 	}
 
+	
 }
