@@ -20,7 +20,7 @@
 </div>
 
 
-	<form method="post" action="AddEmployeeServlets" >
+	<form method="post" action="AddEmployeeServlet" >
 
 		<p>
 			</br>
@@ -31,10 +31,10 @@
 		<fieldset>
 			
 			<label for="name">First Name:</label> 
-			<input type="text" id="fname" name="fname"> <label for="Name">
+			<input type="text" id="fname" name="fname">
 			
 			<label for="name">Last Name:</label> 
-			<input type="text" id="lname" name="lname"> <label for="Name">
+			<input type="text" id="lname" name="lname"> 
 			
 			<label for="name">Address:</label> 
 			<input type="text" id="address" name="address">
